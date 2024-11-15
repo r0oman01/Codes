@@ -1,0 +1,42 @@
+#variáveis
+atual = int(2024)
+idade = int()
+
+
+#Processamento
+
+#salário
+sal = float(input("Digite o seu salário:"))
+
+
+#ano de nascimento
+nasc = int(input("Seu ano de nascimento:"))
+
+#idade 
+idade = atual - nasc  
+print("Sua idade é:", idade)
+
+
+#Verificação da idade para votação
+if (idade < 16):
+    print("Você não pode votar")
+
+
+elif (idade >= 16) and (idade < 18) or (idade > 70):
+        print("Seu voto é facultativo")
+
+    
+if (idade >=18) and (idade < 70):
+    print("Seu voto é obrigatório")
+
+
+#Verificação de salário para os benefícios
+if (sal >= 1000) and (sal < 5000) or (sal < 1000):
+    print("Seu salário é: R$", sal)
+    print("Seu salário está de acordo com os termos, você pode ter acesso aos benefícios")
+
+elif (sal > 10000):
+    print("Seu salário é: R$", sal)
+    print("Seu salário não está de acordo com os termos, você não pode ter acesso aos benefícios")
+
+
