@@ -3,40 +3,63 @@ atual = int(2024)
 idade = int()
 
 
+
 #Processamento
+
+#definir funções
+
+#função de verificação de salário:
+def veficacao_beneficio():
+    if (sal > 10000):
+        print("Seu salário é: R$", sal)
+        print("Você não está de acordo com os termos para os benefícios.")
+
+    elif (sal >= 1000) and (sal < 5000) or (sal < 1000):
+         print("Seu salário é: R$", sal)
+         print("Você está apto a receber os benefícios.")
+  
+
+
+#função verificação votação:
+def verificacao_de_idade():
+    if idade < 16:
+        print("Você não pode votar!")
+
+    elif (idade >= 16) and (idade < 18) or (idade > 70):
+        print("Seu voto é facultativo!")
+        
+    elif (idade >= 18) and (idade < 70):
+        print("Seu voto é obrigatório!")
+
+
+
+
+#pergunta parental
+pais = str(input("Mora com os pais? Apenas responda SIM ou NÃO: "))
+
+#ano de nascimento
+nasc = int(input("Seu ano de nascimento:"))
+
 
 #salário
 sal = float(input("Digite o seu salário:"))
 
 
-#ano de nascimento
-nasc = int(input("Seu ano de nascimento:"))
-
-#idade 
+#idade !
 idade = atual - nasc  
 print("Sua idade é:", idade)
 
 
+#verificação de string
+#if (nasc == False) or (sal == False):
+     #print("Dados incorretos")
+
+
 #Verificação da idade para votação
-if (idade < 16):
-    print("Você não pode votar")
+if verificacao_de_idade() == True:
+    print(verificacao_de_idade())
 
 
-elif (idade >= 16) and (idade < 18) or (idade > 70):
-        print("Seu voto é facultativo")
-
-    
-if (idade >=18) and (idade < 70):
-    print("Seu voto é obrigatório")
-
-
-#Verificação de salário para os benefícios
-if (sal >= 1000) and (sal < 5000) or (sal < 1000):
-    print("Seu salário é: R$", sal)
-    print("Seu salário está de acordo com os termos, você pode ter acesso aos benefícios")
-
-elif (sal > 10000):
-    print("Seu salário é: R$", sal)
-    print("Seu salário não está de acordo com os termos, você não pode ter acesso aos benefícios")
-
-
+#Verificação de benefícios
+if veficacao_beneficio() == True:
+    print(veficacao_beneficio())
