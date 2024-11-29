@@ -3,27 +3,36 @@ timeA = (input("Digite o time A: "))
 timeB = (input("Digite o time B: "))
 timeC = (input("Digite o time C: "))
 timeD = (input("Digite o time D: "))
-
-placar_definido_a = 3
-placar_definido_b = 3
-placar_definido_c = 3
-placar_definido_d = 3
 print("------")
 
+placar_definido_a = 0
+placar_definido_b = 0
+placar_definido_c = 0
+placar_definido_d = 0
+
+
 #processamento
+
+def registro_de_placar():
+    if placarA > placarB and placarA > placarC and placarA > placarD:
+        print(f"O {timeA} ganhou!")
+    elif placarB > placarA and placarB > placarC and placarB > placarD:
+        print(f"O {timeB} ganhou!")
+    elif placarC > placarA and placarC > placarB and placarC > placarD:
+        print(f"O {timeC} ganhou!")
+    elif placarD > placarA and placarD > placarB and placarD > placarB:
+        print(f"O {timeD} ganhou!")
 
 #primeiro jogo timaA x timeB
 placarA = int(input(f"Digite o placar do {timeA}: "))
 placarB = int(input(f"Digite o placar do {timeB}: "))
 if placarA > placarB:
-    placarA = 3
-    placarB = 0
-    print(f"{placarA} pontos")
+    placar_definido_a += 3
+    print(f"{placar_definido_a} pontos")
     print(f"O time {timeA} ganhou!")
 elif placarB > placarA:
-    placarB = 3
-    placarA = 0
-    print(f"{placarB} pontos")
+    placar_definido_b += 3
+    print(f"{placar_definido_b} pontos")
     print(f"O time {timeB} ganhou!")
 elif placarA == placarB:
     placar_definido_a += 1
@@ -34,20 +43,18 @@ print("------")
 
 #segundo jogo timeA x timeC
 placarC = int(input(f"Digite o placar do {timeC}: "))
-placarD = int(input(f"Digite o placar do {timeD}: "))
-if placarC > placarD:
-    placarC = 3
-    placarD = 0
-    print(f"{placarC} pontos")
+placarA = int(input(f"Digite o placar do {timeA}: "))
+if placarC > placarA:
+    placar_definido_c += 3
+    print(f"{placar_definido_c} pontos")
     print(f"O time {timeC} ganhou!")
-elif placarD > placarC:
-    placarD = 3
-    placarC = 0
-    print(f"{placarD} pontos")
-    print(f"O time {timeD} ganhou!")
-elif placarD == placarC:
+elif placarA > placarC:
+    placar_definido_a += 3
+    print(f"{placar_definido_a} pontos")
+    print(f"O time {timeA} ganhou!")
+elif placarA == placarC:
     placar_definido_c += 1
-    placar_definido_d += 1
+    placar_definido_a += 1
     print("Empate!")
 
 print("------")
@@ -122,10 +129,29 @@ elif placarD == placarC:
     placar_definido_d += 1
     print("Empate!")
 
+print("------")
 
+print(f"Os pontos do {timeA}: {placar_definido_a}")
+print(f"Os pontos do {timeB}: {placar_definido_b}")
+print(f"Os pontos do {timeC}: {placar_definido_c}")
+print(f"Os pontos do {timeD}: {placar_definido_d}")
 
+maximo = max(placar_definido_a, placar_definido_b, placar_definido_c, placar_definido_d)
 
+if placar_definido_a > placar_definido_b and placar_definido_a > placar_definido_c and placar_definido_a > placar_definido_d:
+    registro_de_placar()
+elif placar_definido_b > placar_definido_a and placar_definido_b > placar_definido_c and placar_definido_b > placar_definido_d:
+    registro_de_placar()
+elif placar_definido_c > placar_definido_a and placar_definido_c > placar_definido_b and placar_definido_c > placar_definido_d:
+    registro_de_placar()
+elif placar_definido_d > placar_definido_a and placar_definido_d > placar_definido_c and placar_definido_d > placar_definido_b:
+    registro_de_placar()
 
-
-
-
+if placar_definido_a == placar_definido_b or placar_definido_a == placar_definido_c or placar_definido_a == placar_definido_d:
+    registro_de_placar()
+elif placar_definido_b == placar_definido_a or placar_definido_b == placar_definido_c or placar_definido_b == placar_definido_d:
+    registro_de_placar()
+elif placar_definido_c == placar_definido_a or placar_definido_c == placar_definido_b or placar_definido_c == placar_definido_d:
+    registro_de_placar()
+elif placar_definido_d == placar_definido_a or placar_definido_d == placar_definido_c or placar_definido_d == placar_definido_b:
+    registro_de_placar()
