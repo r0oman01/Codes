@@ -9,10 +9,7 @@ placar_definido_a = 0
 placar_definido_b = 0
 placar_definido_c = 0
 placar_definido_d = 0
-
-
 #processamento
-
 def registro_de_placar():
     if placarA > placarB and placarA > placarC and placarA > placarD:
         print(f"O {timeA} ganhou!")
@@ -22,7 +19,6 @@ def registro_de_placar():
         print(f"O {timeC} ganhou!")
     elif placarD > placarA and placarD > placarB and placarD > placarB:
         print(f"O {timeD} ganhou!")
-
 #primeiro jogo timaA x timeB
 placarA = int(input(f"Digite o placar do {timeA}: "))
 placarB = int(input(f"Digite o placar do {timeB}: "))
@@ -38,9 +34,7 @@ elif placarA == placarB:
     placar_definido_a += 1
     placar_definido_b += 1
     print("Empate!")
-
 print("------")
-
 #segundo jogo timeA x timeC
 placarC = int(input(f"Digite o placar do {timeC}: "))
 placarA = int(input(f"Digite o placar do {timeA}: "))
@@ -56,9 +50,7 @@ elif placarA == placarC:
     placar_definido_c += 1
     placar_definido_a += 1
     print("Empate!")
-
 print("------")
-
 #terceiro jogo timeA x timeD
 placarA = int(input(f"Digite o placar do {timeA}: "))
 placarD = int(input(f"Digite o placar do {timeD}: "))
@@ -74,9 +66,7 @@ elif placarD == placarA:
     placar_definido_d += 1
     placar_definido_a += 1
     print("Empate!")
-
 print("------")
-
 #quarto jogo timeB x timeC
 placarB = int(input(f"Digite o placar do {timeB}: "))
 placarC = int(input(f"Digite o placar do {timeC}: "))
@@ -92,9 +82,7 @@ elif placarB == placarC:
     placar_definido_b += 1
     placar_definido_c += 1
     print("Empate!")
-
 print("------")
-
 #quinto jogo timeB x timeD
 placarB = int(input(f"Digite o placar do {timeB}: "))
 placarD = int(input(f"Digite o placar do {timeD}: "))
@@ -110,9 +98,7 @@ elif placarD == placarB:
     placar_definido_b += 1
     placar_definido_d += 1
     print("Empate!")
-
 print("------")
-
 #sexto jogo timeC x timeD
 placarC = int(input(f"Digite o placar do {timeC}: "))
 placarD = int(input(f"Digite o placar do {timeD}: "))
@@ -128,9 +114,7 @@ elif placarD == placarC:
     placar_definido_c += 1
     placar_definido_d += 1
     print("Empate!")
-
 print("------")
-
 print(f"Os pontos do {timeA}: {placar_definido_a}")
 print(f"Os pontos do {timeB}: {placar_definido_b}")
 print(f"Os pontos do {timeC}: {placar_definido_c}")
@@ -139,13 +123,13 @@ print(f"Os pontos do {timeD}: {placar_definido_d}")
 maximo = max(placar_definido_a, placar_definido_b, placar_definido_c, placar_definido_d)
 
 if placar_definido_a > placar_definido_b and placar_definido_a > placar_definido_c and placar_definido_a > placar_definido_d:
-    registro_de_placar()
+    print(f"O time {timeA} ganhou!!")
 elif placar_definido_b > placar_definido_a and placar_definido_b > placar_definido_c and placar_definido_b > placar_definido_d:
-    registro_de_placar()
+    print(f"O time {timeB} ganhou!!")
 elif placar_definido_c > placar_definido_a and placar_definido_c > placar_definido_b and placar_definido_c > placar_definido_d:
-    registro_de_placar()
+    print(f"O time {timeC} ganhou!!")
 elif placar_definido_d > placar_definido_a and placar_definido_d > placar_definido_c and placar_definido_d > placar_definido_b:
-    registro_de_placar()
+    print(f"O time {timeD} ganhou!!")
 
 if placar_definido_a == placar_definido_b or placar_definido_a == placar_definido_c or placar_definido_a == placar_definido_d:
     registro_de_placar()
