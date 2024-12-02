@@ -7,7 +7,7 @@ n2: float = 0
 n3: float = 0
 n4: float = 0
 while True:
-    print("---sejam bem-vindos ao programa de notas---".upper())
+    print("---sejam bem-vindos ao programa de cadastro notas---".upper())
     print("""
     ------Opções------
     1 - Cadastrar notas
@@ -15,10 +15,10 @@ while True:
     3 - Sair
 
     """)
-    menu = input("Escolha a opção: ")
+    menu = input("Escolha entre 1 e 3: ")
     match menu:
         case "1":
-            print("---Cadastrar Notas---")
+            print("---Cadastrar Notas---".upper())
             n1 = float(input("Sua primeira nota: "))
             n2 = float(input("Sua segunda nota: "))
             n3 = float(input("Sua terceira nota: "))
@@ -28,7 +28,7 @@ while True:
             sleep(2)
         case "2":
             media = (n1 + n2 + n3 + n4)/4
-            print("---mostrar médias das notas---".upper())
+            print("---mostrar média das notas---".upper())
             print(f"Sua média é: {media}")
             sleep(2)
         case "3":
