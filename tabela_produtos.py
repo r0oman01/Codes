@@ -45,7 +45,7 @@ Produtos a ser cadastrado:
 Qntd.                  Produto     Valor
 {unitario_total}       {produto}   {f"R$ {valor * unitario1}"}
 -----------------------------------                         
-Valor total: {f"R$ {valor * unitario_total}"}
+Valor total: {f"R$ {(valor * unitario1)}"}
 Data do recibo: {data}
 """)
                 case 2:
@@ -62,7 +62,7 @@ Qntd.                  Produto             Valor
 -------------------------------------------
 {unitario2}      {produto2}          {f"R$ {valor2 * unitario2}"}
 -------------------------------------------
-Valor total: {f"R$ {(valor + valor2) * unitario_total}"}
+Valor total: {f"R$ {(valor * unitario1) + (valor2 * unitario2)}"}
 Data do recibo: {data}
 """)
                 case 3:
@@ -84,7 +84,7 @@ Qntd.                  Produto                  Valor
 ----------------------------------------------
 {unitario3}        {produto3}             {f"R$ {valor3 * unitario3}"}
 ----------------------------------------------
-Valor total: {f"R$ {(valor + valor2 + valor3) * unitario_total}"}
+Valor total: {f"R$ {(valor * unitario1) + (valor2 * unitario2) + (valor3 * unitario3)}"}
 Data do recibo: {data}
 """)
                 case 4:
@@ -112,7 +112,7 @@ Qntd.              Produto              Valor
 {unitario4}        {produto4}          {f"R$ {valor4 * unitario3}"}
 ----------------------------------------------
 
-Valor total: {f"R$ {(valor + valor2 + valor3 + valor4) * unitario_total}"}
+Valor total: {f"R$ {(valor * unitario1) + (valor2 * unitario2) + (valor3 * unitario3) + (valor4 * unitario4)}"}
 Data do recibo: {data}
 """)
 
@@ -147,7 +147,7 @@ Qntd.                  Produto              Valor
 ----------------------------------------------
 
 
-Valor total: {f"R$ {(valor + valor2 + valor3 + valor4 + valor5) * unitario_total}"}
+Valor total: {f"R$ {(valor * unitario1) + (valor2 * unitario2) + (valor3 * unitario3) + (valor4 * unitario4) + (valor5 * unitario5)}"}
 Data do recibo: {data}
 """)
 
