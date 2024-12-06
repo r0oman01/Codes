@@ -1,4 +1,5 @@
 armazenar_placas = []
+valores_armazenados = []
 while True:
     placa_carro = input("Digite a placa: ")
     hora_entrada = int(input("Digite a hora de entrada (0-23): "))
@@ -42,9 +43,10 @@ while True:
         print(f"Valor total a pagar: R$ {total:.2f}")
         print("-" * 20)
     armazenar_placas.append(placa_carro)
+    valores_armazenados.append(total)
     cadastrar_carro = str(input("Quer cadastrar outro carro?")).upper()
     if cadastrar_carro == "N":
         break
-
+print("As placa dos carros registrados são:")
 for x in range(len(armazenar_placas)):
-    print(armazenar_placas[x])
+    print(armazenar_placas[x], f"O total a ser pago é: {valores_armazenados[x]}")
