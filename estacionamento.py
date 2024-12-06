@@ -45,6 +45,6 @@ while True:
     cadastrar_carro = str(input("Quer cadastrar outro carro?")).upper()
     if cadastrar_carro == "N":
         break
-        
+
 for x in range(len(armazenar_placas)):
-    print(armazenar_placas)
+    print(armazenar_placas[x])
