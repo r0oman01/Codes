@@ -47,6 +47,10 @@ while True:
     cadastrar_carro = str(input("Quer cadastrar outro carro?")).upper()
     if cadastrar_carro == "N":
         break
+print("-" * 20)
 print("As placa dos carros registrados são:")
+print("-" * 20)
 for x in range(len(armazenar_placas)):
     print(f"O carro de placa {armazenar_placas[x]} deve pagar: R${valores_armazenados[x]:.2f}")
+    print("-" * 20)
+
