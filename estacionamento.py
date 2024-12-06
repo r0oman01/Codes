@@ -54,3 +54,4 @@ for x in range(len(armazenar_placas)):
     print(f"O carro de placa {armazenar_placas[x]} deve pagar: R${valores_armazenados[x]:.2f}")
     print("-" * 20)
 
+print(f"A soma dos valores totais de cada carro é: R${sum(valores_armazenados):.2f}")
