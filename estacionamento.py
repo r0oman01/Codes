@@ -49,4 +49,4 @@ while True:
         break
 print("As placa dos carros registrados são:")
 for x in range(len(armazenar_placas)):
-    print(armazenar_placas[x], f"O total a ser pago é: {valores_armazenados[x]}")
+    print(f"O carro de placa {armazenar_placas[x]} deve pagar: R${valores_armazenados[x]:.2f}")
