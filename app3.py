@@ -71,4 +71,3 @@ def main(page: ft.Page):
 
 # Inicializando o aplicativo Flet
 ft.app(target=main)
-    
