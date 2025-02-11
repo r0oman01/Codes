@@ -62,7 +62,7 @@ class Conta:
         self.__logg.append({
             "operação": "Depósito",
             "valor": valor,
-            "data": dt.datetime.today().strftime("%Y-%m-%d"),
+            "data": dt.datetime.today().strftime("%D-%M-%A"),
             "saldo anterior": valor_anterior,
             "saldo atual": self.__saldo
         })
@@ -75,7 +75,7 @@ class Conta:
             self.__logg.append({
                 "operação": "Saque",
                 "valor": valor,
-                "data": dt.datetime.today().strftime("%Y-%m-%d"),
+                "data": dt.datetime.today().strftime("%D-%M-%A"),
                 "saldo anterior": valor_anterior,
                 "saldo atual": self.__saldo
             })
@@ -105,10 +105,20 @@ Saldo atual: R${movimento["saldo atual"]}
 """
         return data
 
+class ContaCorrente(Conta):
+    def __init__(self, nome: str, cpf: str, cel: str, n_conta: str, agencia: str, saldo: float, limite:float):
+        super().__init__(self, nome, cpf, cel, n_conta, agencia, saldo, limite)
+        self.__limite = limite
+
+    @property
+    def limite(self):
+        return self.__limite
+
+    def sacar(self, valor: float):
+        if ContaCorrente.
 
 c1 = Conta("Gabriel", "000.000.000.00", "(11)111111111", "1", "160", 1200)
 
-c1.saldo = 1000
 c1.sacar(90)
 c1.depositar(500)
 c1.sacar(100)
