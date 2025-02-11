@@ -1,5 +1,6 @@
 import datetime as dt
 
+
 class Conta:
     def __init__(self, nome: str, cpf: str, cel: str, n_conta: str, agencia: str, saldo: float):
         self.__nome = nome
@@ -97,29 +98,58 @@ class Conta:
         for movimento in self.__logg:
             data += f"""
 Operação: {movimento["operação"]} 
-Valor: R${movimento["valor"]}
+Valor: R${movimento["valor"]} 
 Data: {movimento["data"]}
-Saldo anterior: R${movimento["saldo anterior"]}
-Saldo atual: R${movimento["saldo atual"]}
+Saldo anterior: R${movimento["saldo anterior"]} 
+Saldo atual: R${movimento["saldo atual"]} 
 ----------------------------------
 """
         return data
 
-class ContaCorrente(Conta):
-    def __init__(self, nome: str, cpf: str, cel: str, n_conta: str, agencia: str, saldo: float, limite:float):
-        super().__init__(self, nome, cpf, cel, n_conta, agencia, saldo, limite)
-        self.__limite = limite
+
+class Despesa:
+    def __init__(self, descricao: str, valor: float, categoria: str):
+        self.__descricao = descricao
+        self.__valor = valor
+        self.__categoria = categoria
+        self.__data = dt.datetime.today().strftime("%D-%M-%A")
 
     @property
-    def limite(self):
-        return self.__limite
+    def descricao(self):
+        return self.__descricao
 
-    def sacar(self, valor: float):
-        if ContaCorrente.
+    @property
+    def valor(self):
+        return self.__valor
+
+    @property
+    def categoria(self):
+        return self.__categoria
+
+    @property
+    def data(self):
+        return self.__data
+
+    def registrar_despesa(self, conta: Conta):
+        valor_anterior = conta.saldo
+        conta.sacar(self.__valor)  # A despesa é um saque
+        conta._Conta__logg.append({
+            "operação": "Despesa",
+            "descricao": self.__descricao,
+            "categoria": self.__categoria,
+            "valor": self.__valor,
+            "data": self.__data,
+            "saldo anterior": valor_anterior,
+            "saldo atual": conta.saldo
+        })
+
 
 c1 = Conta("Gabriel", "000.000.000.00", "(11)111111111", "1", "160", 1200)
 
-c1.sacar(90)
-c1.depositar(500)
-c1.sacar(100)
+print(f"Saldo atual: {c1.saldo}")
+
+
+despesa1 = Despesa("Compra no supermercado", 200, "Alimentação")
+despesa1.registrar_despesa(c1)
+
 print(c1.logg)
