@@ -1,128 +1,164 @@
-class Despesas:
-    def __init__(self, valor: float, descricao: str, realizado: bool = False):
-        self.valor = valor
-        self.descricao = descricao
-        self.realizado = realizado
+import flet as ft
+
+class Usuario:
+    def __init__(self, nome, idade, cor, genero, estado_civil, usuario, senha, renda_mensal=None):
+        self._nome = nome
+        self._idade = idade
+        self._cor = cor
+        self._genero = genero
+        self._estado_civil = estado_civil
+        self._usuario = usuario
+        self._senha = senha
+        self._renda_mensal = renda_mensal  # Novo atributo para renda mensal
 
     @property
-    def valor(self):
-        return self.__valor
+    def nome(self):
+        return self._nome
 
-    @valor.setter
-    def valor(self, valor: float):
-        if valor < 0:
-            raise ValueError("O valor da despesa não pode ser negativo.")
-        self.__valor = valor
+    @nome.setter
+    def nome(self, nome):
+        self._nome = nome
 
     @property
-    def descricao(self):
-        return self.__descricao
+    def idade(self):
+        return self._idade
 
-    @descricao.setter
-    def descricao(self, descricao: str):
-        if not descricao:
-            raise ValueError("A descrição não pode ser vazia.")
-        self.__descricao = descricao
-
-    @property
-    def realizado(self):
-        return self.__realizado
-
-    @realizado.setter
-    def realizado(self, realizado: bool):
-        self.__realizado = realizado
-
-    def imprimir_despesa(self):
-        status = "Realizado" if self.realizado else "Não realizado"
-        print(f"\nDespesa: {self.descricao}")
-        print(f"Valor: R${self.valor:.2f}")
-        print(f"Status: {status}")
-
-    def alterar_status(self, novo_status: bool):
-        self.realizado = novo_status
-        print(f"Status alterado para: {'Realizado' if novo_status else 'Não realizado'}")
-
-    def realizar_pagamento(self, valor_pago: float):
-        if valor_pago < self.valor:
-            print(
-                f"Pagamento insuficiente. O valor pago (R${valor_pago:.2f}) é menor que o valor da despesa (R${self.valor:.2f}).")
-            return False
+    @idade.setter
+    def idade(self, idade):
+        if idade >= 0:
+            self._idade = idade
         else:
-            self.realizado = True
-            print(f"Pagamento realizado com sucesso! R${valor_pago:.2f} foi pago para a despesa de R${self.valor:.2f}.")
-            return True
-
-
-class Receita:
-    def __init__(self, valor: float, descricao: str, recebida: bool = False):
-        self.valor = valor
-        self.descricao = descricao
-        self.recebida = recebida
+            print("Idade inválida!")
 
     @property
-    def valor(self):
-        return self.__valor
+    def cor(self):
+        return self._cor
 
-    @valor.setter
-    def valor(self, valor: float):
-        if valor < 0:
-            raise ValueError("O valor da receita não pode ser negativo.")
-        self.__valor = valor
+    @cor.setter
+    def cor(self, cor):
+        self._cor = cor
 
     @property
-    def descricao(self):
-        return self.__descricao
+    def genero(self):
+        return self._genero
 
-    @descricao.setter
-    def descricao(self, descricao: str):
-        if not descricao:
-            raise ValueError("A descrição não pode ser vazia.")
-        self.__descricao = descricao
+    @genero.setter
+    def genero(self, genero):
+        self._genero = genero
 
     @property
-    def recebida(self):
-        return self.__recebida
+    def estado_civil(self):
+        return self._estado_civil
 
-    @recebida.setter
-    def recebida(self, recebida: bool):
-        self.__recebida = recebida
+    @estado_civil.setter
+    def estado_civil(self, estado_civil):
+        self._estado_civil = estado_civil
 
-    def imprimir_receita(self):
-        status = "Recebida" if self.recebida else "Não recebida"
-        print(f"\nReceita: {self.descricao}")
-        print(f"Valor: R${self.valor:.2f}")
-        print(f"Status: {status}")
+    @property
+    def usuario(self):
+        return self._usuario
 
-    def alterar_status(self, novo_status: bool):
-        self.recebida = novo_status
-        print(f"Status alterado para: {'Recebida' if novo_status else 'Não recebida'}")
+    @usuario.setter
+    def usuario(self, usuario):
+        self._usuario = usuario
 
-    def realizar_recebimento(self, valor_recebido: float):
-        if valor_recebido < self.valor:
-            print(
-                f"Recebimento insuficiente. O valor recebido (R${valor_recebido:.2f}) é menor que o valor da receita (R${self.valor:.2f}).")
-            return False
+    @property
+    def senha(self):
+        return self._senha
+
+    @senha.setter
+    def senha(self, senha):
+        self._senha = senha
+
+    @property
+    def renda_mensal(self):
+        return self._renda_mensal
+
+    @renda_mensal.setter
+    def renda_mensal(self, renda):
+        if renda is not None and renda >= 0:
+            self._renda_mensal = renda
         else:
-            self.recebida = True
-            print(f"Recebimento realizado com sucesso! R${valor_recebido:.2f} foi recebido para a receita de R${self.valor:.2f}.")
-            return True
+            print("Valor inválido para renda mensal!")
+
+    def exibir_dados(self):
+        dados = f"Nome: {self.nome}\nIdade: {self.idade}\nCor: {self.cor}\nGênero: {self.genero}\nEstado Civil: {self.estado_civil}\n"
+        if self.renda_mensal is not None:
+            dados += f"Renda Mensal: R${self.renda_mensal:.2f}"
+        return dados
 
 
-despesa = Despesas(200.00, "Pagamento de fatura")
-print("-"*20)
-despesa.imprimir_despesa()
+def tela_de_login(page: ft.Page, usuario: Usuario):
+    # Criando os campos de login
+    usuario_input = ft.TextField(label="Nome de usuário", autofocus=True)
+    senha_input = ft.TextField(label="Senha", password=True)
 
-despesa.realizar_pagamento(200.00)
+    # Botão de login
+    login_button = ft.ElevatedButton("Login", on_click=lambda e: fazer_login(page, usuario, usuario_input, senha_input))
 
-despesa.imprimir_despesa()
-print("-"*20)
+    # Adiciona os campos e botão na tela
+    page.add(usuario_input, senha_input, login_button)
 
-receita = Receita(1000.00, "Recebimento de pagamento de cliente")
 
-receita.imprimir_receita()
+def fazer_login(page: ft.Page, usuario: Usuario, usuario_input: ft.TextField, senha_input: ft.TextField):
+    # Verificar se os dados de login estão corretos
+    if usuario_input.value == usuario.usuario and senha_input.value == usuario.senha:
+        # Limpa a tela e exibe os dados do usuário
+        page.clean()
+        page.add(ft.Text("Login bem-sucedido!"))
+        page.add(ft.Text(usuario.exibir_dados()))
 
-receita.realizar_recebimento(1200.00)
+        # Mostrar dados de Despesas e Receitas (apenas para demonstração)
+        exibir_despesas_receitas(page)
+    else:
+        # Caso o login seja falho
+        page.clean()
+        page.add(ft.Text("Usuário ou senha incorretos!"))
 
-receita.imprimir_receita()
-print("-"*20)
 
+def exibir_despesas_receitas(page: ft.Page):
+    # Classe Despesas
+    class Despesas:
+        def __init__(self, valor: float, descricao: str, realizado: bool = False):
+            self.valor = valor
+            self.descricao = descricao
+            self.realizado = realizado
+
+        def imprimir_despesa(self):
+            status = "Realizado" if self.realizado else "Não realizado"
+            return f"\nDespesa: {self.descricao}\nValor: R${self.valor:.2f}\nStatus: {status}"
+
+    # Classe Receita
+    class Receita:
+        def __init__(self, valor: float, descricao: str, recebida: bool = False):
+            self.valor = valor
+            self.descricao = descricao
+            self.recebida = recebida
+
+        def imprimir_receita(self):
+            status = "Recebida" if self.recebida else "Não recebida"
+            return f"\nReceita: {self.descricao}\nValor: R${self.valor:.2f}\nStatus: {status}"
+
+    # Criar instâncias de Despesas e Receita
+    despesa = Despesas(200.00, "Pagamento de fatura")
+    receita = Receita(1000.00, "Recebimento de pagamento de cliente")
+
+    # Exibir despesa e receita na tela
+    page.add(ft.Text(despesa.imprimir_despesa()))
+    page.add(ft.Text(receita.imprimir_receita()))
+
+
+# Criando um objeto de usuário
+usuario = Usuario(
+    nome="Gabriel Roman",
+    idade=30,
+    cor="Branco",
+    genero="Masculino",
+    estado_civil="Solteiro",
+    usuario="gabrielroman",
+    senha="gabriel123",
+    renda_mensal=5000.00
+)
+
+# Inicializando a aplicação Flet
+ft.app(target=lambda page: tela_de_login(page, usuario))
