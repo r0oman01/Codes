@@ -90,8 +90,8 @@ class Usuario:
 
 def tela_de_login(page: ft.Page, usuario: Usuario):
     # Criando os campos de login
-    usuario_input = ft.TextField(label="Nome de usuário", autofocus=True)
-    senha_input = ft.TextField(label="Senha", password=True)
+    usuario_input = ft.TextField(label="Nome de usuário", autofocus=True, color="#FF69B4")
+    senha_input = ft.TextField(label="Senha", password=True, color="#FF69B4")
 
     # Botão de login
     login_button = ft.ElevatedButton("Login", on_click=lambda e: fazer_login(page, usuario, usuario_input, senha_input))
