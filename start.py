@@ -5,49 +5,61 @@ from menu import Menu
 def start(page: Page):
     page.title = "Control"
 
-    # Criando o objeto Login()
-    def changepagemenu(event):
-        nome = tela_login.inputLogin.value
-        senha = tela_login.inputPassword.value
+    # Criando um objeto do tipo Login
+    def changePageMenu(event):
+        nome = telaLogin.inputLogin.value
+        senha = telaLogin.inputPassword.value
 
-        # Verificando se os campos estão preenchidos corretamente
-        if nome == "carlos" and senha == "123":
-            page.go("/menu")
-            page.update()
+        # Verificando se o nome de usuário e a senha estão vazios
+        if not nome and not senha:
+            telaLogin.inputLogin.error_text = "Digite um login"
+            telaLogin.inputPassword.error_text = "Digite uma senha"
+            telaLogin.update()  # Atualiza a tela para mostrar ambos os erros
         else:
-            # Se o nome ou a senha estiverem errados, mostramos os erros de forma apropriada
-            if nome != "carlos":
-                tela_login.inputLogin.error_text = "Login incorreto"
+            # Se o nome de usuário foi preenchido, limpa o erro do campo de login
+            if nome:
+                telaLogin.inputLogin.error_text = ""
             else:
-                tela_login.inputLogin.error_text = ""
+                telaLogin.inputLogin.error_text = "Digite um login"
 
-            if senha != "123":
-                tela_login.inputPassword.error_text = "Senha incorreta"
+            # Se a senha foi preenchida, limpa o erro do campo de senha
+            if senha:
+                telaLogin.inputPassword.error_text = ""
             else:
-                tela_login.inputPassword.error_text = ""
+                telaLogin.inputPassword.error_text = "Digite uma senha"
 
-        # Atualiza a tela de login
-        tela_login.update()
+            # Se ambos estiverem preenchidos, verifica se o login está correto
+            if nome and senha:
+                if nome == "roman" and senha == "123":
+                    page.go("/menu")  # Mudando a página para /menu
+                    page.update()
+                else:
+                    telaLogin.inputPassword.error_text = "Senha incorreta"
+                    telaLogin.inputLogin.error_text = "Login incorreto"
+                    telaLogin.update()  # Atualizando a tela para mostrar os erros
 
-    tela_login = Login()
-    tela_login.btnEnter.on_click = changepagemenu
-    tela_menu = Menu()
+            telaLogin.update()  # Atualiza a tela com as mensagens de erro
 
-    def changeroutes(route):
-        # Adiciona a tela de login na rota principal
-        page.views.append(
-            View(route="/", controls=[tela_login])
-        )
+    telaLogin = Login()
 
-        # Quando a rota for '/menu', adiciona a tela do menu
-        if page.route == "/menu":
-            page.views.append(
-                View(route="/menu", controls=[tela_menu])
-            )
+    # Ação do botão de login
+    telaLogin.btnEnter.on_click = changePageMenu
+    telaMenu = Menu()
+
+    def changeRoutes(route):
+        # Verificando qual página deve ser exibida de acordo com a rota
+        if page.route == "/":
+            # Página inicial (Login)
+            page.views.append(telaLogin)
+        elif page.route == "/menu":
+            # Página de menu
+            page.views.append(View(route="/menu", controls=[telaMenu]))
+
         page.update()
 
-    page.on_route_change = changeroutes
+    # Mudando de rota
+    page.on_route_change = changeRoutes
     page.go(page.route)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app(target=start)
