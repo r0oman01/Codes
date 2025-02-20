@@ -13,7 +13,7 @@ class Login(View):
         self.btnEnter = ElevatedButton(text="Login",width=300, color="green", scale=1)
         imagem = ResponsiveRow(
             controls=[
-                Container(content=Image(src="assets/imagem_estranha.jpg"), col={"xs":12,"md":6, "lg":4})
+                Container(content=Image(src="assets_projeto_adega/imagem_estranha.jpg"), col={"xs":12, "md":6, "lg":4})
             ], alignment=MainAxisAlignment.CENTER
 
         )
