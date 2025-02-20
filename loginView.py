@@ -8,8 +8,8 @@ class Login(View):
     # construtor
     def __init__(self):
         super().__init__()
-        self.inputLogin = TextField(label=Text("Usuário", color="black"), width=300, border_color="fff", border_radius=50, color='black')
-        self.inputPassword = TextField(label=Text("Senha", color="black"), password=True, width=300, border_color="fff", border_radius=50, color='black')
+        self.inputLogin = TextField(label=Text("Usuário", color="black"), width=300, border_color="black", border_radius=50, color='black', cursor_color="black")
+        self.inputPassword = TextField(label=Text("Senha", color="black"), password=True, width=300, border_color="black", border_radius=50, color='black', cursor_color="black")
         self.btnEnter = ElevatedButton(text="Login",width=300, color="green", scale=1)
         imagem = ResponsiveRow(
             controls=[
