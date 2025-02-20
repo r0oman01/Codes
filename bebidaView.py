@@ -4,7 +4,7 @@ from flet import *
 class Bebida(Container):
     def __init__(self):
         super().__init__()
-        self.t_fieldNome = TextField(label=Text("Produto", color="black"), color="black")
+        self.t_fieldNome = TextField(label=Text("Produto", color="black"), color="black", border_color="black")
         self.dropTipo = Dropdown(
         label= Text("Tipo", color="black"),
         width=150,
