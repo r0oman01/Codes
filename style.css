@@ -1,0 +1,8 @@
+.content-section {
+    display: none; /* Esconde todas as seções por padrão */
+  }
+  
+  .content-section.active {
+    display: block; /* Exibe a seção ativa */
+  }
+  
